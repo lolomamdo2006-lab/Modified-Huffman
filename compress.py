@@ -78,6 +78,6 @@ def compress(data,limit=0.05):
             compressed_data+=code["others"]+original_code[i]
         else:
             compressed_data+=s
-    print(compressed_data)
 
+    return compressed_data,code,original_code
 #-------------------
