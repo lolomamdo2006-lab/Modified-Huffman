@@ -1,18 +1,4 @@
-import pickle
-import ast
-with open("code.txt", "r") as code:
-  code_file = ast.literal_eval(code.read())
-
-with open("original_code.txt", "r") as original_code:
-  original_code_file = ast.literal_eval(original_code.read())
-
-
-with open("compresses.bin", "rb") as comprssed_file:
-  compressed_data = iter(pickle.load(comprssed_file))
-
-
-
-def decomress_modified(compressed_data,code_file,original_code_file):
+def decompress_modified(compressed_data,code_file,original_code_file):
  
   i = 0
   data=""
@@ -35,4 +21,3 @@ def decomress_modified(compressed_data,code_file,original_code_file):
 
   return output
 
-print(decomress_modified(compressed_data,code_file,original_code_file))
