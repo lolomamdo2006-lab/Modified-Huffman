@@ -9,9 +9,11 @@ def main():
         choice = input("Choose an option: ")
 
         if choice == "1":
-            data=input("Inter Your Data: ")
-            compress(data)
+            data=input("Enter Your Data: ")
+            limit=float(input("Enter the limit (default is 0.05) "))
+            compress(data,limit)
             #abcazdafcqdadcuabapd
+            #BEE$BEE$BEAD
 
         elif choice == "2":
             pass
