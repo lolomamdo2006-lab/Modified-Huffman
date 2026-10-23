@@ -1,4 +1,3 @@
-
 from compress import *
 from decompress import *
 import ast
@@ -11,7 +10,6 @@ def load_dictionary_from_file(filename):
     with open(filename, 'r', encoding='utf-8') as file:
         return ast.literal_eval(file.read())
 
-
 def main():
     while True:
         print("\n===== Lossless Compression =====")
@@ -20,12 +18,14 @@ def main():
         print("3. Exit")
 
         choice = input("Choose an option: ").strip()
-        
 
         if choice == "1":
+
+            limit=float(input("Enter the limit (default is 0.05) "))
             with open("Input.txt", "r", encoding="utf-8") as file:
                 data = file.read()
-            compressed_data, code, original_code = compress(data)
+            compressed_data, code, original_code = compress(data,limit)
+
             padding_lenght= (8-len(compressed_data)%8)%8
             padding_str=compressed_data+('0'*padding_lenght)
             byte_array = bytearray()
@@ -37,12 +37,13 @@ def main():
              file.write(byte_array)
             with open("padding.txt","w") as padding_file:
                 padding_file.write(str(padding_lenght))
+
             save_dictionary_to_file("code.txt", {bits: symbol for symbol, bits in code.items()})
             save_dictionary_to_file("original_code.txt", {bits: symbol for symbol, bits in original_code.items()}
 )
 
             print("Compression completed.")
-            print("Compressed data saved to Compression_output.bin")
+            print("Compressed data saved to Compression_output.txt")
 
         elif choice == "2":
             bit_by_bit=[]

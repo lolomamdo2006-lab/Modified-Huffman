@@ -42,7 +42,7 @@ def generate_code(node,code,bits):
     
 
 #======================
-def compress(data):
+def compress(data,limit=0.05):
     h=[]
     code={}
     prob=calc_freq(data)
@@ -51,7 +51,7 @@ def compress(data):
     original_code=org_code(prob)
     #================Create nodes
     for i in prob.keys():
-        if(prob[i]>0.05):
+        if(prob[i]>limit):
             n=node(prob[i],i,None,None)
             h.append(n)
         else:
